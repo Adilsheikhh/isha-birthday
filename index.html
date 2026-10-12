@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday, Isha! 🎂✨</title>
+<meta name="description" content="A little corner of the internet made just for you. Happy Birthday Isha!" />
+<meta property="og:title" content="Happy Birthday, Isha! 🎂✨" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
+</head>
+<body>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Entrance overlay -->
+  <div id="enter-screen">
+    <div class="enter-card">
+      <div class="enter-emoji">🎀</div>
+      <h2>A surprise just for you…</h2>
+      <p>for someone with the most beautiful soul</p>
+      <button id="enter-btn">💌 Open it, Isha</button>
+      <small>best viewed with sound on</small>
+    </div>
+  </div>
+
+  <!-- Loading tiny bar (keeps order nice) -->
+  <div class="grain"></div>
+
+  <main id="content" class="hidden">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="balloons" aria-hidden="true">
+        <div class="balloon b1"></div>
+        <div class="balloon b2"></div>
+        <div class="balloon b3"></div>
+        <div class="balloon b4"></div>
+        <div class="balloon b5"></div>
+        <div class="balloon b6"></div>
+      </div>
+      <div class="sparkles-hero" aria-hidden="true"></div>
+
+      <p class="hero-kicker">✨ it's your special day ✨</p>
+      <h1 class="hero-title"><span>Happy</span> <span>Birthday</span></h1>
+      <div class="hero-name">Isha 🎂</div>
+      <p class="hero-line" id="typed"></p>
+      <div class="hero-scroll">scroll down ↓</div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="gallery" id="gallery">
+      <h2 class="section-title">Moments with you</h2>
+      <p class="section-sub">click any photo to see it up close</p>
+      <div class="grid" id="photo-grid"></div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="letter" id="letter">
+      <div class="envelope">
+        <div class="letter-paper">
+          <h2 class="section-title dark">A letter for you 🌷</h2>
+          <div class="letter-body">
+            <p>Dear Isha,</p>
+            <p>
+              Some people fill your life with noise — you fill mine with light. You're the kind of
+              friend who makes ordinary days feel like adventures, who turns my worst moments into
+              my most-laughed stories, and who somehow makes the world feel a little softer just by
+              being in it.
+            </p>
+            <p>
+              On your birthday I want you to know: you are loved more than you realize, appreciated
+              more than you can measure, and wanted more than you could ever believe.
+            </p>
+            <p>
+              Today the cake, the candles, the wishes — all of it is yours. But the best part is that
+              you're here, being you. Never stop being you.
+            </p>
+            <p class="letter-sign">Happy Birthday, best friend.<br /><span>— with love, Adil 🎁</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REASONS -->
+    <section class="reasons" id="reasons">
+      <h2 class="section-title">Six reasons</h2>
+      <p class="section-sub">…and there are a thousand more</p>
+      <div class="cards" id="reason-cards"></div>
+    </section>
+
+    <!-- CAKE -->
+    <section class="cake-section" id="cake">
+      <h2 class="section-title">Make a wish ✨</h2>
+      <p class="section-sub">if you believe hard enough, it comes true —<br />now tap the candles to blow them out!</p>
+      <div class="cake-stage">
+        <div class="plate"></div>
+        <div class="cake">
+          <div class="icing"></div>
+          <div class="candle c1"><div class="flame"></div></div>
+          <div class="candle c2"><div class="flame"></div></div>
+          <div class="candle c3"><div class="flame"></div></div>
+          <div class="candle c4"><div class="flame"></div></div>
+          <div class="candle c5"><div class="flame"></div></div>
+        </div>
+      </div>
+      <p id="wish-message">🔥 all candles lit — go on, make it count</p>
+      <button class="confetti-btn" id="big-confetti">🎉 pop the celebration</button>
+    </section>
+
+    <footer class="footer">
+      <p>made with 💖 for Isha · the most amazing best friend in the universe</p>
+      <p class="footer-sub">every good thing is coming your way this year ✨</p>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hidden">
+    <button id="lb-close" aria-label="close">&times;</button>
+    <figure>
+      <img id="lb-img" src="" alt="" />
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
