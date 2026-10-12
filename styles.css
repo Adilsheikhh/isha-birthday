@@ -296,11 +296,91 @@ section { padding: 90px 20px; max-width: 1100px; margin: 0 auto; }
 .envelope {
   position: relative;
   width: min(680px, 100%);
+}
+.env-closed {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 300px;
+  padding: 40px 24px;
+  border: 2px solid #f3d9c8;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #fffdf8, #ffe9d6);
+  box-shadow: 0 24px 60px rgba(122,59,217,0.18);
+  cursor: pointer;
+  overflow: hidden;
+  font-family: var(--font-body);
+  animation: float 3.2s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.env-closed:active { transform: scale(0.98); }
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46%;
+  background: linear-gradient(180deg, #ffd7c2, #ffc4a6);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  box-shadow: 0 6px 18px rgba(180,120,90,0.18);
+}
+.env-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 40px;
+}
+.env-seal {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  font-size: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff8fb4, #e0316f);
+  box-shadow: 0 10px 22px rgba(224,49,111,0.45), inset 0 -4px 8px rgba(0,0,0,0.15);
+}
+.env-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--deep);
+}
+.env-hint {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #b06a8a;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+.letter-paper {
+  display: none;
+  width: 100%;
   background: linear-gradient(160deg, #fffdf8, #fff3ea);
   border: 1px solid #f3d9c8;
   border-radius: 18px;
   box-shadow: 0 24px 60px rgba(122,59,217,0.15);
   padding: 44px 40px;
+}
+.envelope.open .env-closed { display: none; }
+.envelope.open .letter-paper {
+  display: block;
+  animation: unfold 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes unfold {
+  from { opacity: 0; transform: translateY(34px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 .letter-body p {
   margin: 1.05em 0;

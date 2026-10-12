@@ -61,8 +61,16 @@
 
     <!-- LETTER -->
     <section class="letter" id="letter">
-      <div class="envelope">
-        <div class="letter-paper">
+      <div class="envelope" id="envelope">
+        <button class="env-closed" id="env-open" type="button" aria-label="Open the letter">
+          <span class="env-flap"></span>
+          <span class="env-inner">
+            <span class="env-seal">💌</span>
+            <span class="env-label">A letter for you</span>
+            <span class="env-hint">tap to open ✨</span>
+          </span>
+        </button>
+        <div class="letter-paper" id="letter-paper">
           <h2 class="section-title dark">A letter for you 🌷</h2>
           <div class="letter-body">
             <p>Dear Isha,</p>

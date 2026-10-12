@@ -132,8 +132,21 @@
     enterScreen.classList.add("fade-out");
     content.classList.remove("hidden");
     try { playTune(); } catch (e) { /* fine */ }
+    revealArmed = true;
+    requestAnimationFrame(revealCheck);
+    setTimeout(revealCheck, 250);
+    setTimeout(revealCheck, 900);
     burst(160);
     setTimeout(() => enterScreen.remove(), 800);
+  });
+
+  /* ---------------- open the letter ---------------- */
+  const envelope = $("#envelope");
+  $("#env-open").addEventListener("click", () => {
+    if (envelope.classList.contains("open")) return;
+    envelope.classList.add("open");
+    burst(90);
+    setTimeout(revealCheck, 400);
   });
 
   /* ---------------- confetti ---------------- */
@@ -246,22 +259,41 @@
 
   /* ---------------- reveal on scroll ---------------- */
   const revealEls = $$(".photo-card, .flip, .envelope, .cake-stage");
+  let revealArmed = false;
+  let revealTicking = false;
+
+  const restTransform = (el) =>
+    (el.dataset.rot ? `rotate(${el.dataset.rot}deg) ` : "") + "translateY(0)";
+
   revealEls.forEach((el) => {
     el.style.opacity = "0";
-    const rot = el.dataset.rot ? `rotate(${el.dataset.rot}deg) ` : "";
-    el.style.transform = `${rot}translateY(40px)`;
+    el.style.transform =
+      (el.dataset.rot ? `rotate(${el.dataset.rot}deg) ` : "") + "translateY(40px)";
     el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
   });
-  const revealIo = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (en.isIntersecting) {
-        const el = en.target;
+
+  function revealCheck() {
+    revealTicking = false;
+    if (!revealArmed) return;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    revealEls.forEach((el) => {
+      if (el.dataset.shown) return;
+      if (el.getBoundingClientRect().top < vh * 0.9) {
+        el.dataset.shown = "1";
         el.style.opacity = "1";
-        const rot = el.dataset.rot ? `rotate(${el.dataset.rot}deg) ` : "";
-        el.style.transform = `${rot}translateY(0)`;
-        revealIo.unobserve(el);
+        el.style.transform = restTransform(el);
       }
     });
-  }, { threshold: 0.15 });
-  revealEls.forEach((el) => revealIo.observe(el));
+  }
+
+  function onScrollReveal() {
+    if (!revealArmed || revealTicking) return;
+    revealTicking = true;
+    requestAnimationFrame(revealCheck);
+  }
+
+  window.addEventListener("scroll", onScrollReveal, { passive: true });
+  window.addEventListener("resize", onScrollReveal, { passive: true });
+  window.addEventListener("orientationchange", onScrollReveal, { passive: true });
+  window.addEventListener("pageshow", () => { if (revealArmed) revealCheck(); });
 })();
